@@ -7,7 +7,7 @@ Proyecto correspondiente al **Trabajo Práctico 11: Gestión de Calidad** de la 
 ## Contenido del Proyecto
 
 1. **Conjetura de Collatz (`collatz.py` / `src/tp11_is2/collatz.py`):**
-   - Implementación verificada del algoritmo $3n + 1$ para números en el rango $1 \le N \le 1999$.
+   - Implementación verificada del algoritmo 3n + 1 para números en el rango 1 a 1999.
    - Manejo robusto de excepciones para entradas inválidas, tipos no enteros y límites de frontera.
 2. **Filtro de Conversión JSON a CSV (`json2csv.py` / `src/tp11_is2/json2csv.py`):**
    - Herramienta de línea de comandos basada en la filosofía de filtros de Unix.
