@@ -5,6 +5,15 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/
 
 ---
 
+## [1.1.0] - 2026-10-05 (Build: 2026.10.05.01)
+
+### Agregado
+- Resolución exhaustiva de los Puntos 8, 9, 12 y 13 en `docs/RESOLUCION_PUNTOS_8_9_12_13.md`.
+- Ampliación de la suite de pruebas unitarias y funcionales con Pytest a 23 casos de test.
+- Cobertura de código al 100% (superando el umbral requerido del 85%).
+- Generación de gráficos de regresión y proyección de defectos de Musa (`docs/regresion_punto12.png` y `docs/regresion_punto13.png`).
+- Documentación de hipótesis de test unitario (H1 a H8).
+
 ## [1.0.0] - 2026-10-03 (Build: 2026.10.03.01)
 
 ### Agregado

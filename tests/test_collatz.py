@@ -63,3 +63,17 @@ def test_main_error_validacion(monkeypatch, capsys):
     main()
     captured = capsys.readouterr()
     assert "Error de validacion" in captured.out
+
+
+def test_collatz_script_execution(monkeypatch, capsys):
+    """Prueba de ejecucion del modulo como script principal (__main__)."""
+    import runpy
+    import sys
+
+    monkeypatch.setattr("builtins.input", lambda _: "20")
+    sys.modules.pop("tp11_is2.collatz", None)
+    runpy.run_module("tp11_is2.collatz", run_name="__main__")
+    captured = capsys.readouterr()
+    assert "El numero de partida es 20 y el numero de iteraciones es 7." in captured.out
+
+

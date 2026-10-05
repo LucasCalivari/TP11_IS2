@@ -93,3 +93,34 @@ def test_cli_archivo_inexistente(monkeypatch):
     with pytest.raises(SystemExit) as excinfo:
         main()
     assert excinfo.value.code == 1
+
+
+def test_lista_vacia():
+    """Retorna cadena vacia si el JSON es una lista vacia sin registros."""
+    assert json_to_csv("[]") == ""
+
+
+def test_cli_error_valor_invalido(monkeypatch, capsys):
+    """Manejo de excepcion ValueError en CLI cuando el JSON es invalido."""
+    monkeypatch.setattr("sys.argv", ["json2csv.py"])
+    monkeypatch.setattr("sys.stdin.read", lambda: "{json_invalido: 123}")
+    with pytest.raises(SystemExit) as excinfo:
+        main()
+    assert excinfo.value.code == 1
+    captured = capsys.readouterr()
+    assert "Error:" in captured.err
+
+
+def test_json2csv_script_execution(monkeypatch, capsys):
+    """Prueba de ejecucion del modulo json2csv como script principal (__main__)."""
+    import runpy
+    import sys
+
+    monkeypatch.setattr("sys.argv", ["json2csv.py"])
+    monkeypatch.setattr("sys.stdin.read", lambda: '[{"a": 1}]')
+    sys.modules.pop("tp11_is2.json2csv", None)
+    runpy.run_module("tp11_is2.json2csv", run_name="__main__")
+    captured = capsys.readouterr()
+    assert "a\n1\n" in captured.out
+
+

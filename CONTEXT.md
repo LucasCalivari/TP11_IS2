@@ -25,3 +25,17 @@ Este documento registra los prompts y el contexto de interacción con herramient
   > *"Ayudame a planificar el código de json2csv.py, lo más simple y básico posible, cumpliendo con lo mínimo pedido"*
 * **Resultado obtenido:**
   - Código modular y robusto de `json2csv.py` con soporte para stdin/stdout, archivos (`-i`, `-o`), delimitador configurable (`-d`) y manejo de UTF-8 con BOM.
+
+---
+
+## 4. Fase de Verificación, Modelos de Confiabilidad y Testing Unitario (Puntos 8, 9, 12 y 13)
+* **Objetivo:** Resolver y verificar los Puntos 8, 9, 12 y 13 del TP11, formalizar hipótesis de test unitario y ejecutar la suite completa en Pytest asegurando cobertura $\ge 85\%$.
+* **Prompt principal utilizado:**
+  > *"Realiza los puntos 8, 9, 12 y 13. Ejecuta pruebas unitarias con Pytest (Cobertura >= 85%) (Test unitario con Pytest con hipótesis de test unitario que permitan la cobertura del 85% o mejor.)."*
+* **Resultado obtenido:**
+  - Verificación formal de las 3 condiciones de parada del Punto 8 con matriz RTMX íntegra.
+  - Consolidación del listado de 6 sesiones y 12 defectos detectados (Punto 9).
+  - Aplicación del modelo exponencial de Musa y regresión lineal logarítmica para proyección de defectos del Punto 12 ($\lambda_0=11.29$, $\mu_0=98.12$, remanentes $r=26.12$) y generación de visualización gráfica.
+  - Aplicación de regresión y métricas de código para el algoritmo de Collatz del Punto 13 ($S_{\text{final}}=37\text{ LOCs}$, $\mu_0=16.96$, liberados $r=4.96$, $\delta_0=0.458\text{ def/LOC}$, $\delta_r=0.134\text{ def/LOC}$).
+  - Ejecución de 23 pruebas unitarias y funcionales en Pytest alcanzando una cobertura del 100% (superando ampliamente el umbral del 85%).
+
