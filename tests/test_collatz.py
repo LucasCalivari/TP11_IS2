@@ -2,7 +2,7 @@
 
 import pytest
 
-from collatz import collatz, main
+from tp11_is2.collatz import collatz, main
 
 
 def test_t1_caso_base():
@@ -32,6 +32,11 @@ def test_t5_excede_limite_maximo():
     """T5: N=2000 excede el limite de 1999 y debe lanzar ValueError."""
     with pytest.raises(ValueError):
         collatz(2000)
+
+
+def test_t6_minimo_par_valido():
+    """T6: N=2 minimo par valido debe retornar 1 iteracion."""
+    assert collatz(2) == 1
 
 
 def test_tipos_invalidos():

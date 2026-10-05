@@ -4,7 +4,7 @@ import json
 
 import pytest
 
-from json2csv import json_to_csv, main
+from tp11_is2.json2csv import json_to_csv, main
 
 
 def test_conversion_lista_objetos():
