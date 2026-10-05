@@ -75,5 +75,3 @@ def test_collatz_script_execution(monkeypatch, capsys):
     runpy.run_module("tp11_is2.collatz", run_name="__main__")
     captured = capsys.readouterr()
     assert "El numero de partida es 20 y el numero de iteraciones es 7." in captured.out
-
-

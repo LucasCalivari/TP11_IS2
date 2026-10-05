@@ -122,5 +122,3 @@ def test_json2csv_script_execution(monkeypatch, capsys):
     runpy.run_module("tp11_is2.json2csv", run_name="__main__")
     captured = capsys.readouterr()
     assert "a\n1\n" in captured.out
-
-
