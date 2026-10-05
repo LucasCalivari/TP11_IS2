@@ -1,0 +1,56 @@
+name: CI/CD Pipeline - Calidad y Pruebas
+
+on:
+  push:
+    branches: [ "main", "dev", "master" ]
+  pull_request:
+    branches: [ "main", "dev", "master" ]
+
+jobs:
+  quality-and-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Clonar repositorio
+      uses: actions/checkout@v4
+
+    - name: Configurar Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.11"
+
+    - name: Instalar dependencias
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        pip install -e .
+        pip install pdoc
+
+    - name: Validar formato con Black
+      run: |
+        black --check .
+
+    - name: Validar reglas de estilo PEP8 y PEP257 con Ruff
+      run: |
+        ruff check .
+
+    - name: Analisis estatico de tipos con MyPy
+      run: |
+        mypy json2csv.py collatz.py src/
+
+    - name: Analisis de tipos con Pyright
+      run: |
+        pyright json2csv.py collatz.py
+
+    - name: Evaluacion de seguridad con Bandit (sin TruffleHog)
+      run: |
+        bandit -r . -x ./venv,./.venv,./tests -ll
+
+    - name: Ejecutar pruebas unitarias con Pytest (Cobertura >= 85%)
+      run: |
+        pytest --cov=. --cov-fail-under=85 tests/
+
+    - name: Generar documentacion tecnica con pdoc
+      run: |
+        mkdir -p docs/api
+        pdoc -o docs/api tp11_is2
